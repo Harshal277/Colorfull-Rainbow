@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Colourfull Rain</title>
+   <style>
+      *{
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+      body{
+         background: #000;
+         height: 100vh;
+         overflow: hidden;
+      }
+      i{
+         position: absolute;
+         height: 200px;
+         top: -300px;
+         border-bottom-left-radius: 5px;
+         border-bottom-right-radius: 5px;
+         animation: fall 10s linear infinite;
+      }
+      @keyframes fall {
+         0%{
+           transform: translateY(-200px); 
+         }
+         100%{
+           transform: translateY(calc(100vh + 200px)); 
+         }
+      }
+   </style>
+</head>
+<body>
+   <script>
+      var count = 150, i = 0
+      var root = document.querySelector("body")
+      while(i < count){
+         var drop = document.createElement("i")
+         var posiX = Math.floor(Math.random() * window.innerWidth)
+         var width = Math.floor(Math.random() * (6 - 3)) + 2
+         var height = Math.floor(Math.random() * (200 - 100 + 1)) + 100;
+         var delay = Math.floor(Math.random() * (6 - 1)) + 1
+         var duration = Math.floor(Math.random() * (8 - 4)) + 4;
+         var r = Math.floor(Math.random() * (255 - 0)) + 0;
+         var g = Math.floor(Math.random() * (255 - 0)) + 0;
+         var b = Math.floor(Math.random() * (255 - 0)) + 0;
+         drop.style.width = 0.2 + width + 'px'
+         drop.style.animationDelay = delay + 's'
+         drop.style.animationDuration = duration + 's'
+         drop.style.height = 0.2 + height + 'px'
+         drop.style.left = posiX + 'px'
+         drop.style.background = `linear-gradient(transparent, rgb(${r},${g},${b}))`;
+         root.appendChild(drop)
+         i++
+      }
+   </script>
+</body>
+</html>
